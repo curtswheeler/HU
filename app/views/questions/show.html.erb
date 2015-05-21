@@ -1,0 +1,51 @@
+<!--question-->
+<div class="container">
+  <div class="lead well">
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" width="50px" src="<%= @question.gravatar %>">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= @question.email %> asked:</h4>
+        <%= @question.body %>
+      </div>
+    </div>
+  </div>
+</div>
+<!--questions end-->
+
+<!--answers-->
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <div>
+      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#new-answer-modal">Submit
+        new answer
+      </button>
+    </div>
+
+    <%= render 'home/new_answer_form' %>
+
+    <% @answers.each do |answer| %>
+
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" width="50px" src="<%= answer.gravatar %>" alt="...">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= answer.email %> answered:</h4>
+            <%= answer.body %>
+            <br>
+            <%= time_ago_in_words(answer.created_at) %> ago
+          </div>
+        </div>
+
+    <% end %>
+
+  </div>
+</div>
+<!--answers end-->
+

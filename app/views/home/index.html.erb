@@ -1,21 +1,27 @@
 <h1>Welcome</h1>
 <div class="container">
-  <% @questions.each do |q| %>
-      <div class="media">
-        <div class="media-left">
-          <a href="#">
-            <img class="media-object" width="50px" src="<%= q.gravatar %>">
-          </a>
-        </div>
-        <div class="media-body">
-          <h4 class="media-heading"><%= q.email %> asked:</h4>
-          <%= q.body %>
-          <br>
-          <%= time_ago_in_words(q.created_at) %> ago
-          <div>
-            <a href="<%= question_path(q) %>" class="btn btn-success btn-xs">View Answers</a>
+  <div class="boxes">
+    <% @questions.each do |q| %>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" width="50px" src="<%= q.gravatar %>">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading"><%= q.email %> asked:</h4>
+            <%= q.body %>
+            <br>
+
+            <div class="time"><%= time_ago_in_words(q.created_at) %> ago</div>
+            <div>
+              <a href="<%= question_path(q) %>" class="btn btn-success btn-xs">View Answers</a>
+            </div>
           </div>
         </div>
-      </div>
+    <% end %>
+  </div>
+  <% if @questions.empty? %>
+      <div class="alert alert-info">Nothing here yet, be the first to ask?</div>
   <% end %>
 </div>

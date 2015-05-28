@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
 
+  #resources required to generate default routes.
   resources :questions
+  resources :answers
+
   root 'home#index'
 
   get '/about' => 'home#about'
 
+  # post '/questions' => 'questions#create'
 
-  #
-  # post '/questions' => 'home#temp'
-  # post '/answers' => 'home#temp'
+  # post '/answers' => 'answers#create'
+
   #
   #
   # get 'questions/:id' => 'home#question'
